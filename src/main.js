@@ -1,11 +1,9 @@
-import FilterView from './view/filter-view';
-import {render} from './render.js';
 import BoardPresenter from './presenter/board-presenter';
+import BoardModel from './domain/model/board-model.js';
 
-const siteHeaderElement = document.querySelector('.trip-controls__filters');
-const siteMainElement = document.querySelector('.trip-events');
-const boardPresenter = new BoardPresenter({boardContainer: siteMainElement});
+const model = new BoardModel();
+const presenter = new BoardPresenter(model);
 
-render(new FilterView(), siteHeaderElement);
-
-boardPresenter.init();
+document.addEventListener('DOMContentLoaded', () => {
+  presenter.init();
+});
